@@ -1,4 +1,4 @@
-class V2::BeersController < ApplicationController
+class Api::V2::BeersController < ApplicationController
   def index
     @beers = Beer.all
     render "index.json.jbuilder"
