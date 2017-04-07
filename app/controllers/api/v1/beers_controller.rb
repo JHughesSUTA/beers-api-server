@@ -11,7 +11,7 @@ class Api::V1::BeersController < ApplicationController
       alcohol: params[:alcohol]
     )
     @beer.save
-    render "index.json.jbuilder"
+    render "show.json.jbuilder"
   end
 
   def show

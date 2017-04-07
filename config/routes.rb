@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get "/" => "beers#index"
-      get "/beers" => "beers#index"
+      get "/beers" => "beers#indnex"
       post "/beers" => "beers#create"
       get "/beers/:id" => "beers#show"
       patch "/beers/:id" => "beers#update"
