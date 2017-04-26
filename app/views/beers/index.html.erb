@@ -1,0 +1,14 @@
+<div id="app">
+  <h1>Add a Beer:</h1>
+  <div>
+    Name: <input type="text" v-model="newBeerName">
+    Style: <input type="text" v-model="newBeerStyle">
+    Acohol Content: <input type="text" v-model="newBeerAlcohol">
+    <button v-on:click="addBeer()">Add Beer</button>
+  </div>
+  <div v-for="beer in beers">
+    <h3>{{ beer.name }}</h3>
+    <p>{{ beer.style }}</p>
+    <p>{{ beer.alcohol_content }}</p>
+  </div>
+</div>

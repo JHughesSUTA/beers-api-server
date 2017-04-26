@@ -18,4 +18,7 @@ Rails.application.routes.draw do
       delete "/beers/:id" => "beers#destroy"
     end
   end
+  
+  get "/" => "beers#index"
+  get "/beers" => "beers#index"
 end
