@@ -7,14 +7,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newBeerName: "",
       newBeerStyle: "",
       newBeerAlcohol: "",
-      nameFilter: ""
+      nameFilter: "",
+      styleFilter: ""
     },
     computed: {
       filteredBeers: function() {
         var lowerNameFilter = this.nameFilter.toLowerCase();
+        var lowerStyleFilter = this.styleFilter.toLowerCase();
         var filtered = this.beers.filter(function(beer) {
           var lowerName = beer.name.toLowerCase();
-          return lowerName.indexOf(lowerNameFilter) !== -1;
+          var lowerStyle = beer.style.toLowerCase();
+          return lowerName.indexOf(lowerNameFilter) !== -1 && lowerStyle.indexOf(lowerStyleFilter) !== -1;
         });
         return filtered;
       }

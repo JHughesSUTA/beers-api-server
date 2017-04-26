@@ -12,6 +12,9 @@
   <div>
     Search by name: <input type="text" v-model="nameFilter">
   </div>
+  <div>
+    Search by style: <input type="text" v-model="styleFilter">
+  </div>
   <div v-for="beer in filteredBeers">
     <h3>{{ beer.name }}</h3>
     <p>{{ beer.style }}</p>
