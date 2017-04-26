@@ -5,7 +5,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
       beers: [],
       newBeerName: "",
       newBeerStyle: "",
-      newBeerAlcohol: ""
+      newBeerAlcohol: "",
+      nameFilter: ""
+    },
+    computed: {
+      filteredBeers: function() {
+        var lowerNameFilter = this.nameFilter.toLowerCase();
+        var filtered = this.beers.filter(function(beer) {
+          var lowerName = beer.name.toLowerCase();
+          return lowerName.indexOf(lowerNameFilter) !== -1;
+        });
+        return filtered;
+      }
     },
     mounted: function() {
       $.get("/api/v2/beers", function(responseData) {
@@ -23,5 +34,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }.bind(this));
       }
     }
-  });
+  });ta
 });

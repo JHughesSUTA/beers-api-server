@@ -6,7 +6,10 @@
     Acohol Content: <input type="text" v-model="newBeerAlcohol">
     <button v-on:click="addBeer()">Add Beer</button>
   </div>
-  <div v-for="beer in beers">
+  <div>
+    Search by name: <input type="text" v-model="nameFilter">
+  </div>
+  <div v-for="beer in filteredBeers">
     <h3>{{ beer.name }}</h3>
     <p>{{ beer.style }}</p>
     <p>{{ beer.alcohol_content }}</p>
