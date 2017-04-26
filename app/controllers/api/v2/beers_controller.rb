@@ -10,8 +10,11 @@ class Api::V2::BeersController < ApplicationController
       style: params[:style],
       alcohol: params[:alcohol]
     )
-    @beer.save
-    render "show.json.jbuilder"
+    if @beer.save
+      render "show.json.jbuilder"
+    else
+      render json: { errors: @beer.errors.full_messages }, status: 422
+    end
   end
 
   def show

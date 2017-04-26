@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el: '#app',
     data: {
       beers: [],
+      errors: [],
       newBeerName: "",
       newBeerStyle: "",
       newBeerAlcohol: "",
@@ -25,14 +26,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     },
     methods: {
       addBeer: function() {
+        this.errors = [];
         var params = {name: this.newBeerName, style: this.newBeerStyle, alcohol: this.newBeerAlcohol};
         $.post("/api/v2/beers", params, function(responseData) {
           this.beers.push(responseData);
           this.newBeerName = "";
           this.newBeerStyle = "";
           this.newBeerAlcohol = "";
+        }.bind(this)).fail(function(response) {
+          this.errors = response.responseJSON.errors;
         }.bind(this));
       }
     }
-  });ta
+  });
 });
