@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newBeerStyle: "",
       newBeerAlcohol: "",
       nameFilter: "",
-      styleFilter: ""
+      styleFilter: "",
+      sortAttribute: "name"
     },
     computed: {
       filteredBeers: function() {
@@ -19,7 +20,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
           var lowerStyle = beer.style.toLowerCase();
           return lowerName.indexOf(lowerNameFilter) !== -1 && lowerStyle.indexOf(lowerStyleFilter) !== -1;
         });
-        return filtered;
+        var sorted = filtered.sort(function(beer1, beer2) {
+          return beer1[this.sortAttribute] > beer2[this.sortAttribute];
+        }.bind(this));
+        return sorted;
       }
     },
     mounted: function() {
@@ -28,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }.bind(this));
     },
     methods: {
+      setSortAttribute: function(inputAttribute) {
+        this.sortAttribute = inputAttribute;
+      },
       addBeer: function() {
         this.errors = [];
         var params = {name: this.newBeerName, style: this.newBeerStyle, alcohol: this.newBeerAlcohol};

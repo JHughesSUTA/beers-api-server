@@ -16,10 +16,10 @@
     Search by style: <input type="text" v-model="styleFilter">
   </div>
   <div>
-    <table>
+    <table border=1 width=100%>
       <tr>
-        <th>Name</th>
-        <th>Style</th>
+        <th v-on:click="setSortAttribute('name')">Name</th>
+        <th v-on:click="setSortAttribute('style')">Style</th>
         <th>Alcohol Content</th>
       </tr>
       <tr v-for="beer in filteredBeers">
