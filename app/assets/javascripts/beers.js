@@ -21,7 +21,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           return lowerName.indexOf(lowerNameFilter) !== -1 && lowerStyle.indexOf(lowerStyleFilter) !== -1;
         });
         var sorted = filtered.sort(function(beer1, beer2) {
-          return beer1[this.sortAttribute] > beer2[this.sortAttribute];
+          return beer1[this.sortAttribute].localeCompare(beer2[this.sortAttribute]);
+          // return beer1[this.sortAttribute] > beer2[this.sortAttribute];
         }.bind(this));
         return sorted;
       }
