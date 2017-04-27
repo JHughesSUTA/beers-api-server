@@ -15,6 +15,7 @@
   <div>
     Search by style: <input type="text" v-model="styleFilter">
   </div>
+  
   <div>
     <table border=1 width=100%>
       <tr>
@@ -22,16 +23,21 @@
         <th v-on:click="setSortAttribute('style')">Style</th>
         <th>Alcohol Content</th>
       </tr>
-      <tr v-for="beer in filteredBeers">
-        <td>{{ beer.name }}</td>
-        <td>{{ beer.style }}</td>
-        <td>{{ beer.alcohol_content }}</td>
-      </tr>
+      <tbody name="fade" is="transition-group">
+        <tr v-for="beer in filteredBeers" v-bind:key="beer.id">
+          <td>{{ beer.name }}</td>
+          <td>{{ beer.style }}</td>
+          <td>{{ beer.alcohol_content }}</td>
+        </tr>
+      </transition-group>
     </table>
   </div>
-  <!-- <div v-for="beer in filteredBeers">
-    <h3>{{ beer.name }}</h3>
-    <p>{{ beer.style }}</p>
-    <p>{{ beer.alcohol_content }}</p>
-  </div> -->
+  
+<!--   <transition-group name="fade">
+    <div v-for="beer in filteredBeers" v-bind:key="beer.id">
+      <h3>{{ beer.name }}</h3>
+      <p>{{ beer.style }}</p>
+      <p>{{ beer.alcohol_content }}</p>
+    </div>
+  </transition-group> -->
 </div>
