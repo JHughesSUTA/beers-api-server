@@ -6,7 +6,7 @@
   <div>
     Name: <input type="text" v-model="newBeerName">
     Style: <input type="text" v-model="newBeerStyle">
-    Acohol Content: <input type="text" v-model="newBeerAlcohol">
+    Alcohol Content: <input type="text" v-model="newBeerAlcohol">
     <button v-on:click="addBeer()">Add Beer</button>
   </div>
   <div>
@@ -15,9 +15,23 @@
   <div>
     Search by style: <input type="text" v-model="styleFilter">
   </div>
-  <div v-for="beer in filteredBeers">
+  <div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Style</th>
+        <th>Alcohol Content</th>
+      </tr>
+      <tr v-for="beer in filteredBeers">
+        <td>{{ beer.name }}</td>
+        <td>{{ beer.style }}</td>
+        <td>{{ beer.alcohol_content }}</td>
+      </tr>
+    </table>
+  </div>
+  <!-- <div v-for="beer in filteredBeers">
     <h3>{{ beer.name }}</h3>
     <p>{{ beer.style }}</p>
     <p>{{ beer.alcohol_content }}</p>
-  </div>
+  </div> -->
 </div>
